@@ -1,38 +1,77 @@
+<style scoped>
+* {
+  margin: 0;
+  padding: 0;
+}
+.hello{
+  position: relative;
+  width: 100%;
+  min-height: 10vh;
+ 
+  text-align: center;
+}
+input{
+  width: 80vw;
+  height: 30px;
+  margin-top:10px ;
+  border-radius:30px ;
+  border: none;
+  background: rgb(243, 242, 242);
+  padding-left: 40px;
+    border: none;
+    outline: none;
+}
+.imgs{
+  position: absolute;
+  left: 4%;
+  top:50%;
+  width: 30px;
+  height: 30px;
+
+}
+#esc-btn{
+ position: absolute;
+ left:3%;
+}
+</style>
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
+    <div class="hello">
+     <img src="../assets/img/尖括号-左.png" alt="" id="esc-btn" v-show="top" @click="escBtn" >
+      <h3 >{{message}}</h3>
+    
+      <input type="text" placeholder="搜索" @focus="focusList" >
+      <img src="../assets/img/搜索.png" alt="" class="imgs">
+   
   </div>
 </template>
 
 <script>
 export default {
   name: 'HelloWorld',
+  data() {
+     return {
+       message: '微信读书',
+        top:false,
+    }
+  },
+  methods: {
+    //获得焦点
+    focusList() {
+      this.message = "搜索"
+        this.top=true
+    },
+    //返回
+    escBtn() {
+      this.top = false
+       this.message = "微信读书"
+    }
+  },
+  watch: {
+    top() {
+       
+      
+    },
+  },
   props: {
     msg: String
   }
@@ -40,19 +79,4 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-</style>
+
