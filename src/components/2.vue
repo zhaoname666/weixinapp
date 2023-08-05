@@ -3,10 +3,16 @@
    margin: 0;
    padding: 0;
 }
+.hello{
+    widows: 100px;
+
+    height:100px;
+    background: red;
+}
     </style>
   <template>
      <div class='hello'>
-    saffffffffffffffffffffffffffffffffffffffffffffff
+               
      </div>
   </template>
   <script>
