@@ -3,17 +3,101 @@
    margin: 0;
    padding: 0;
 }
+
+        .imgs{
+            width: 20vw;
+            float: left;
+            margin-right: 10px;
+ 
+         }
+         .no{
+            width: 100%;
+            margin: 20px;
+            min-height: 20vh;
+            line-height: 20px;
+ 
+         }
+         .no pre, p{
+            font-size: 10px;
+            color: rgb(131, 127, 127);
+         }
     </style>
   <template>
      <div class='hello'>
-        4444444444444444444444
+          <div class="no" v-for="(item, index) in arr" :key="index"  >
+                     <img :src="item.src" alt="" class="imgs">
+                     <div style="width: 10px;height: 20px;" ></div>
+                        <h3 style="margin: 10px;">{{ item.name }}</h3>
+                        <pre>{{ item.text }} </pre>
+                        <p> 推荐值 {{ item.n }}%  <b v-if="item.status" style="color:red">{{ item.html }}</b></p>
+
+   
+                 </div>
      </div>
   </template>
   <script>
     export default {
      name: 'HelloWorld',
      data() {
-     return {
+          return {
+        arr: [
+              {
+
+                 name: "资本的秘密",
+                 src: "https://weread-1258476243.file.myqcloud.com/weread/cover/25/cpplatform_8numzl8erzinxvfsk3p9jv/t6_cpplatform_8numzl8erzinxvfsk3p9jv1685508354.jpg",
+                 text: "赫尔南多·德·索托",
+                 n: 89.8,
+                 status: true,
+                 html: "好评如潮",
+
+              },
+
+              {
+
+                 name: "天工开物",
+                 src: "https://weread-1258476243.file.myqcloud.com/weread/cover/75/cpplatform_vkins1c9mzkmfbt3kjlrn9/t6_cpplatform_vkins1c9mzkmfbt3kjlrn91677476708.jpg",
+                 text: "宋莹星",
+                 n: 97.6,
+                 status: true,
+                 html: "神作",
+              },
+              {
+
+                 name: "法医秦明：白卷",
+                 src: "https://weread-1258476243.file.myqcloud.com/weread/cover/55/cpplatform_2thuj2jlv1odkiylmdlcjr/t6_cpplatform_2thuj2jlv1odkiylmdlcjr1689825647.jpg",
+                 text: "法医秦明",
+                 n: 78.6,
+                 status: true,
+                 html: "好评如潮",
+              },
+              {
+
+                 name: "长安的荔枝",
+                 src: "https://weread-1258476243.file.myqcloud.com/weread/cover/75/cpPlatform_dbb14284a55f1e733b60202b0777255d/t6_cpPlatform_dbb14284a55f1e733b60202b0777255d.jpg",
+                 text: "马伯庸",
+                 n: 50.8,
+                 status: true,
+                 html: "废材",
+              },
+              {
+
+                 name: "活着",
+                 src: "https://wfqqreader-1252317822.image.myqcloud.com/cover/464/834464/t6_834464.jpg",
+                 text: "余华",
+                 n: 99.8,
+                 status: true,
+                 html: "神作",
+              },
+              {
+
+                 name: "从文自传",
+                 src: "https://wfqqreader-1252317822.image.myqcloud.com/cover/791/36059791/t6_36059791.jpg",
+                 text: "从文",
+                 n: 60.8,
+                 status: true,
+                 html: "废材",
+              },
+           ]
            }
             },
    methods: {//方法

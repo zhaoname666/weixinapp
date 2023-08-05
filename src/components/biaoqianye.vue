@@ -20,7 +20,7 @@ ul li {
    width: 100%;
    height:50vh;
    background: red;
-   overflow-y: auto;
+   overflow-y: scroll;
    background: #fff;
 }
 .imgs{
@@ -51,7 +51,7 @@ ul li {
 }
     </style>
   <template>
-     <div class='hello'>
+     <div class='hello' ref="no">
       <div id="noes">
         <ul >
          <li :class="i==index ? 'color' : ''"   v-for="(item,index) in arr" :key="index"  @click=" btns(index)"  >{{ item.name }}</li>
@@ -73,7 +73,7 @@ ul li {
        <div v-if="no2">  <No2/></div>
        <div  v-if="no3">  <No3/></div>
           <div  v-if="no4">  <No4/></div>
- 
+          
         
      </div>
   </template>
@@ -97,6 +97,8 @@ ul li {
      },
      data() {
           return {
+               ss: false,
+              sc:false,
                no1: false,
                no2: false,
                no3: false,
@@ -224,13 +226,30 @@ ul li {
                   ],
 
            }
-            },
+     },
+          
+     destroyed() {
+        this.$refs.no.removeEventListener('scroll', this.handleScroll);
+     },
    methods: {//方法
         btns(value) {
             
              this.i=value
          
-      }
+      },
+        handleScroll() {
+        const scrollHeight = this.$refs.no.scrollHeight;
+           const scrollTop = this.$refs.no.scrollTop;
+           const clientHeight = this.$refs.no.clientHeight;
+
+           const scrollPercentage = (scrollTop / (scrollHeight - clientHeight)) * 100;
+           const remainingPercentage = 100 - scrollPercentage;
+
+           if (remainingPercentage <= 10) {
+               this
+           }
+        }
+        
             },
     watch: {//监听
          i() {
@@ -269,7 +288,7 @@ ul li {
 
      },
      mounted() {
-        
+          this.$refs.no.addEventListener('scroll', this.handleScroll);
    
           this.arr[0].text.forEach((item) => {
            
