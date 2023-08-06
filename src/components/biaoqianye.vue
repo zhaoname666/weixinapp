@@ -262,6 +262,7 @@ ul li {
                this.loge = false
                  this.loge1 = true
                  remainingPercentage = 20
+                 console.log(111);
 
                
              
