@@ -10,7 +10,7 @@
  
       }
       .no{
-         width: 100%;
+         width: 80%;
          margin: 20px;
          min-height: 20vh;
          line-height: 20px;

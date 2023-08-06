@@ -30,7 +30,7 @@ ul li {
  
 }
 .no{
-   width: 100%;
+   width: 80%;
    margin: 20px;
    min-height: 20vh;
    line-height: 20px;
@@ -49,6 +49,10 @@ ul li {
 .color{
    color:rgb(78, 159, 226)
 }
+   #loge{
+      height: 50px;
+      margin: auto;
+   }
     </style>
   <template>
      <div class='hello' ref="no">
@@ -74,8 +78,12 @@ ul li {
        <div  v-if="no3">  <No3/></div>
           <div  v-if="no4">  <No4/></div>
           
-        
-     </div>
+      <div style="width: 100%;text-align: center;margin-bottom: 50px;">
+            <img id="loge" v-if="loge"  src="https://www.aladdiny.com/uploads/loaddata.gif" alt="">
+             <div v-if="loge1" style="color: red;">加载失败</div> 
+         </div>
+      </div>
+    
   </template>
   <script>
   import No1 from './1.vue'
@@ -97,6 +105,8 @@ ul li {
      },
      data() {
           return {
+               loge: false,
+            loge1:false,
                ss: false,
               sc:false,
                no1: false,
@@ -233,7 +243,7 @@ ul li {
      },
    methods: {//方法
         btns(value) {
-            
+             
              this.i=value
          
       },
@@ -243,11 +253,19 @@ ul li {
            const clientHeight = this.$refs.no.clientHeight;
 
            const scrollPercentage = (scrollTop / (scrollHeight - clientHeight)) * 100;
-           const remainingPercentage = 100 - scrollPercentage;
+           let remainingPercentage = 100 - scrollPercentage;
+                console.log(Math.ceil(remainingPercentage));
+           if (Math.ceil(remainingPercentage) ==0) {
+                this.loge = true
+                  this.loge1 = false
+            setTimeout(() => {
+               this.loge = false
+                 this.loge1 = true
+                 remainingPercentage=20
+             
+            }, 3000)
 
-           if (remainingPercentage <= 10) {
-               this
-           }
+             } 
         }
         
             },
