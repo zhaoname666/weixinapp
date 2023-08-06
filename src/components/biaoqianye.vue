@@ -80,7 +80,7 @@ ul li {
           
       <div style="width: 100%;text-align: center;margin-bottom: 50px;">
             <img id="loge" v-if="loge"  src="https://www.aladdiny.com/uploads/loaddata.gif" alt="">
-             <div v-if="loge1" style="color: red;">加载失败</div> 
+             <!-- <div v-if="loge1" style="color: red;">加载失败</div>  -->
          </div>
       </div>
     
@@ -261,10 +261,12 @@ ul li {
             setTimeout(() => {
                this.loge = false
                  this.loge1 = true
-                 remainingPercentage=20
+                 remainingPercentage = 20
+
+               
              
             }, 3000)
-
+         
              } 
         }
         

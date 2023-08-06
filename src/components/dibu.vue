@@ -4,12 +4,12 @@
    padding: 0;
 }
 .hello{
-   border-top: 1px solid #999797;
+   border-top: 1px solid #f0eded;
     position: fixed;
     bottom: 0%;
     background:white;
 width: 110%;
-    height: 10vh;
+    height: 8vh;
  
 }
 dl{
@@ -17,7 +17,11 @@ dl{
    width: 10vw;
    margin: 10px 50px;
    text-align: center;
-   color: rgb(139, 139, 139);
+   color: rgb(187, 184, 184);
+   font-size: 12px;
+}
+img{
+   width: 20px;
 }
     </style>
   <template>

@@ -15,11 +15,25 @@
             margin: 20px;
             min-height: 20vh;
             line-height: 20px;
+               position: relative;
  
          }
          .no pre, p{
             font-size: 10px;
             color: rgb(131, 127, 127);
+         }
+           #loge{
+            position: absolute;
+            left: 88%;
+            top: 9%;
+            width: 20vw;
+            height: 3vh;
+            text-align:left;
+            background: rgb(235, 234, 234);
+            font-size: 6px;
+            color: rgb(129, 130, 131);
+            line-height: 1px;
+            border-radius: 15px;
          }
     </style>
   <template>
@@ -30,7 +44,7 @@
                         <h3 style="margin: 10px;">{{ item.name }}</h3>
                         <pre>{{ item.text }} </pre>
                         <p> 推荐值 {{ item.n }}%  <b v-if="item.status" style="color:red">{{ item.html }}</b></p>
-
+                          <div id="loge"> <img style="margin-left: 12px;margin-top: 2px;     vertical-align: text-bottom;" src="../assets/img/账户.png" alt=""> <span>2965</span></div>
    
                  </div>
      </div>
