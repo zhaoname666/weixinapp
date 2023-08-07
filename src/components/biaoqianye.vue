@@ -248,6 +248,35 @@ ul li {
          
       },
         handleScroll() {
+         let sss= [{
+
+              name: "从文自传",
+              src: "https://wfqqreader-1252317822.image.myqcloud.com/cover/791/36059791/t6_36059791.jpg",
+              text: "从文",
+              n: 60.8,
+              status: false,
+              html: "废材",
+           },
+           {
+
+              name: "挣脱",
+              src: "https://weread-1258476243.file.myqcloud.com/weread/cover/9/cpplatform_ffxxfh9zishrhh1gdece8z/t6_cpplatform_ffxxfh9zishrhh1gdece8z1690196853.jpg",
+              text: "刘仁霞",
+              n: 89.8,
+              html: "好评如潮",
+           },
+           {
+
+              name: "上等快乐",
+              src: "https://weread-1258476243.file.myqcloud.com/weread/cover/43/cpplatform_uksuobynut7k8guvdp7jpb/t6_cpplatform_uksuobynut7k8guvdp7jpb1690794764.jpg",
+              text: "打野来了",
+              n: 60,
+              status: false,
+              html: "废材",
+
+           },
+           ]
+          
         const scrollHeight = this.$refs.no.scrollHeight;
            const scrollTop = this.$refs.no.scrollTop;
            const clientHeight = this.$refs.no.clientHeight;
@@ -255,7 +284,8 @@ ul li {
            const scrollPercentage = (scrollTop / (scrollHeight - clientHeight)) * 100;
            let remainingPercentage = 100 - scrollPercentage;
                 console.log(Math.ceil(remainingPercentage));
-           if (Math.ceil(remainingPercentage) ==0) {
+             if (Math.ceil(remainingPercentage) == 0) {
+            
                 this.loge = true
                   this.loge1 = false
             setTimeout(() => {
@@ -263,7 +293,7 @@ ul li {
                  this.loge1 = true
                  remainingPercentage = 20
                  console.log(111);
-
+               this.arr[0].text.push(...sss)
                
              
             }, 3000)

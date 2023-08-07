@@ -37,7 +37,7 @@
 
     </style>
   <template>
-     <div class='hello'>
+     <div class='hello' @scroll="gunD">
       <div class="no" v-for="(item,index) in arr" :key="index"  >
                 <img :src="item.src" alt="" class="imgs">
                 <div style="width: 10px;height: 20px;" ></div>
@@ -116,7 +116,21 @@
            }
             },
    methods: {//方法
-            },
+      gunD(event) {
+           let scrollTop = event.target.scrollTop;
+           let clientHeight = event.target.clientHeight;
+           let scrollHeight = event.target.scrollHeight;
+           const scrollPercentage = (scrollTop / (scrollHeight - clientHeight)) * 100;
+           let remainingPercentage = 100 - scrollPercentage;
+           console.log(Math.ceil(remainingPercentage));
+           if (Math.ceil(remainingPercentage) == 0) {
+              this.arr.push(...this.arr)
+              setTimeout(() => {
+                 remainingPercentage = 60
+              }, 2000)
+           }
+        },
+     },
     watch: {//监听
      op() {
          },

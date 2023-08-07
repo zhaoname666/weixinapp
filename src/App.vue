@@ -2,9 +2,7 @@
   <div id="app">
     <Card />
     <Labels />
-     <Buttos />
- 
- 
+     <Buttos /> 
   
     
   </div>
@@ -21,7 +19,7 @@ export default {
   components: { 
     Card,
     Labels,
-     Buttos
+    Buttos
   }
 }
 </script>

@@ -61,6 +61,7 @@ img{
         text-align: center;
         margin-bottom: 10px;
    }
+
     </style>
   <template>
      <div class='hello'>
