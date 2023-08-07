@@ -23,18 +23,24 @@ dl{
 img{
    width: 20px;
 }
+.red{
+   color: red;
+}
+.color{
+   color:red
+}
     </style>
   <template>
      <div class='hello'>
-        <dl>
+        <dl @click="btn(1)" :class="i==1?'color':''" >
          <dt><img src="../assets/img/福利.png" alt=""></dt>
          <dd>福利</dd>
         </dl>
-         <dl>
+         <dl @click="btn(2)" ref="no" :class="i == 2 ? 'color' : ''" >
               <dt><img src="../assets/img/资源 2.png" alt=""></dt>
               <dd>书城</dd>
          </dl>
-              <dl>
+              <dl @click="btn(3)"   :class="i == 3 ? 'color' : ''">
               <dt><img src="../assets/img/微信图片_20230804172226.png" alt=""></dt>
               <dd>听书</dd>
              </dl>
@@ -44,10 +50,24 @@ img{
     export default {
      name: 'HelloWorld',
      data() {
-     return {
+          return {
+            i:2
            }
+     },
+     mounted() {
+      
+          if (this.i != 2) {
+             this.$refs.no.style.color = "";
+            } else {
+         this.$refs.no.class = "red";
+        }
             },
    methods: {//方法
+        btn(index) {
+           this.i=index
+           
+             
+          }
             },
     watch: {//监听
      op() {

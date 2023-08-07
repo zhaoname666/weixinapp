@@ -122,7 +122,7 @@
            let scrollHeight = event.target.scrollHeight;
            const scrollPercentage = (scrollTop / (scrollHeight - clientHeight)) * 100;
            let remainingPercentage = 100 - scrollPercentage;
-           console.log(Math.ceil(remainingPercentage));
+        
            if (Math.ceil(remainingPercentage) == 0) {
               this.arr.push(...this.arr)
               setTimeout(() => {

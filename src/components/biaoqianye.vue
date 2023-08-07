@@ -78,8 +78,8 @@ ul li {
        <div  v-if="no3">  <No3/></div>
           <div  v-if="no4">  <No4/></div>
           
-      <div style="width: 100%;text-align: center;margin-bottom: 50px;">
-            <img id="loge" v-if="loge"  src="https://www.aladdiny.com/uploads/loaddata.gif" alt="">
+      <div style="width: 100%;text-align: center;margin-bottom: 50px;"  v-if="loge" >
+            <img id="loge"  src="https://www.aladdiny.com/uploads/loaddata.gif" alt="">
              <!-- <div v-if="loge1" style="color: red;">加载失败</div>  -->
          </div>
       </div>
@@ -283,7 +283,7 @@ ul li {
 
            const scrollPercentage = (scrollTop / (scrollHeight - clientHeight)) * 100;
            let remainingPercentage = 100 - scrollPercentage;
-                console.log(Math.ceil(remainingPercentage));
+            
              if (Math.ceil(remainingPercentage) == 0) {
             
                 this.loge = true
@@ -292,7 +292,7 @@ ul li {
                this.loge = false
                  this.loge1 = true
                  remainingPercentage = 20
-                 console.log(111);
+             
                this.arr[0].text.push(...sss)
                
              
@@ -329,7 +329,7 @@ ul li {
                  this.no4 = true
                  break;                
             }
-           console.log(this.no2,this.i);
+      
            },
        
            },
