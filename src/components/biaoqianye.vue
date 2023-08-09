@@ -65,7 +65,7 @@ ul li {
         </ul></div>
         <div style="height: 30px;"></div>
         <div class="noe" v-for="(item,index) in arr[i].text" :key="index" >
-       <div @click.once="fun(item)" class="no" v-if="s" >
+       <div @click="fun(item)" class="no" v-if="s" >
            <img :src="item.src" alt="" class="imgs">
            <div style="width: 10px;height: 20px;" ></div>
               <h3 style="margin: 10px;">{{ item.name }}</h3>

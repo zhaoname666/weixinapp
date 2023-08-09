@@ -136,9 +136,11 @@ export default {
     },
     methods: {//方法
         fun(value) {
+            if (confirm("要添加到书架吗！！")) {
+                     this.arr.unshift(value.src)
+               }
        
-            this.arr.push(value.src)
-            alert("已添加到书架")
+           
         },
         gunD() {
         //     console.log(111111111);

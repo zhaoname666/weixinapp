@@ -69,5 +69,8 @@ export default {
  
   z-index: 2;
 }
+#app{
+  /* overflow: hidden; */
+}
 
 </style>
