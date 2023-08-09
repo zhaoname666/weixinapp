@@ -56,8 +56,10 @@ h5{
    
 }
 #noe{
-    width: 100%;
-    overflow-x: auto;
+    width: 80%;
+     white-space: nowrap;
+    overflow: auto;
+    padding-right:5% ;
 }
 #noe img{
     width: 20vw;
@@ -80,13 +82,23 @@ h5{
     top: 48%;
 
 }
+.top{
+    position: fixed;
+    top:0px;
+   left: 5%;
+    background: white;
+    z-index: 20;
+    padding-top: 20px;
+}
 
 </style>
 <template>
- 
-    <div class="hello">
-           <HelloWorld></HelloWorld>
-    <div class="box">
+  
+    <div class="hello" @wheel="gunD">
+        <!-- 添加滚轮事件 -->
+       <div class="top" >    <HelloWorld ></HelloWorld></div>
+       <div style="height: 10vh;"></div>
+    <div class="box" v-if="i">
       <div>
         <div class="left">
             <img src="../assets/img/33333.jpg" alt=""> 
@@ -94,8 +106,8 @@ h5{
             <span style="color:rgb(124, 124, 121);margin-left: 5px;">体验卡今日到期</span>
         </div>
         <h5 class="right">反馈</h5>
-        <div id="noe">
-              <img src="https://weread-1258476243.file.myqcloud.com/weread/cover/25/cpplatform_8numzl8erzinxvfsk3p9jv/t6_cpplatform_8numzl8erzinxvfsk3p9jv1685508354.jpg" alt=""> 
+        <div id="noe" >
+              <img v-for="(item, index) in arr" :key="index"     :src="item" alt=""> 
               
         </div>
         <div id="no">书架</div> <img id="no2" src="../assets/img/尖括号111.png" alt="">
@@ -108,9 +120,14 @@ h5{
 <script>
 import HelloWorld from './HelloWorld.vue'
 export default {
-   name:"app",
+    name: "app",
+    mounted(){
+     this.$bus.$on("TingS",this.fun)
+   },
     data() {
         return {
+            i: true,
+            arr:["https://weread-1258476243.file.myqcloud.com/weread/cover/25/cpplatform_8numzl8erzinxvfsk3p9jv/t6_cpplatform_8numzl8erzinxvfsk3p9jv1685508354.jpg"]
             
         }
     },
@@ -118,7 +135,19 @@ export default {
         HelloWorld,
     },
     methods: {//方法
-     
+        fun(value) {
+       
+            this.arr.push(value.src)
+            alert("已添加到书架")
+        },
+        gunD() {
+        //     console.log(111111111);
+        //  if (event.deltaY > 0) {
+        //       this.i=false
+        //     } else if (event.deltaY < 0) {
+        //      this.i=true
+        //     }
+     }
     },
     watch: {//监听
         top() {

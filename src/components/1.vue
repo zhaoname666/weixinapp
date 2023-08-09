@@ -110,7 +110,8 @@ img{
                        this.loge = false
                        
                           this.arr.push(...this.arr1)
-                     },2000)
+                  }, 2000)
+                     remainingPercentage=30
            }
       
       }

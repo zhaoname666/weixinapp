@@ -64,7 +64,7 @@ img{
 
     </style>
   <template>
-     <div class='hello'>
+     <div class='hello'  @scroll="gunD">
               <h1>top50 /飙升榜</h1>
               <div class="no" v-for="(item,index) in arr" :key="index" >
                 <img :src="item.src" alt="" class="imgs">
@@ -133,17 +133,36 @@ img{
      },
    methods: {//方法
         btn() {
-         this.n=true
-         this.i=true
+           this.n = true
+           this.i = true
          setTimeout(() => {
-        this.i=false
+              this.i = false
 
-          
+
          }, 3000)
 
+
+      },
+        gunD(event) {
+           let scrollTop = event.target.scrollTop;
+           let clientHeight = event.target.clientHeight;
+           let scrollHeight = event.target.scrollHeight;
+           const scrollPercentage = (scrollTop / (scrollHeight - clientHeight)) * 100;
+           let remainingPercentage = 100 - scrollPercentage;
+
+           if (Math.ceil(remainingPercentage) == 0) {
+              this.i = true
+                   remainingPercentage = 30
+              setTimeout(() => {
+                 this.i = false
+
+               
+              }, 2000)
          
-      }
-            },
+           }
+        },
+   },
+     
     watch: {//监听
      op() {
          },

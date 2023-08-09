@@ -64,7 +64,8 @@ img{
             },
    methods: {//方法
         btn(index) {
-           this.i=index
+           this.i = index
+             this.$bus.$emit("xxx",index)
            
              
           }

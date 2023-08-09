@@ -17,8 +17,10 @@ ul li {
    color: rgb(97, 96, 96);
 }
 .hello {
+   position: sticky;
+   top:20%;
    width: 100%;
-   height:50vh;
+   height:100vh;
    background: red;
    overflow-y: scroll;
    background: #fff;
@@ -41,10 +43,11 @@ ul li {
    color: rgb(131, 127, 127);
 }
 #noes{
-     position:fixed; 
+     position:sticky; 
+     top: 0px;
      background: white;
      height: 5vh;
-     
+     z-index: 1000;
 }
 .color{
    color:rgb(78, 159, 226)
@@ -61,8 +64,8 @@ ul li {
          <li :class="i==index ? 'color' : ''"   v-for="(item,index) in arr" :key="index"  @click=" btns(index)"  >{{ item.name }}</li>
         </ul></div>
         <div style="height: 30px;"></div>
-        <div id="noe" v-for="(item,index) in arr[i].text" :key="index" >
-       <div class="no" v-if="s" >
+        <div class="noe" v-for="(item,index) in arr[i].text" :key="index" >
+       <div @click.once="fun(item)" class="no" v-if="s" >
            <img :src="item.src" alt="" class="imgs">
            <div style="width: 10px;height: 20px;" ></div>
               <h3 style="margin: 10px;">{{ item.name }}</h3>
@@ -78,8 +81,8 @@ ul li {
        <div  v-if="no3">  <No3/></div>
           <div  v-if="no4">  <No4/></div>
           
-      <div style="width: 100%;text-align: center;margin-bottom: 50px;"  v-if="loge" >
-            <img id="loge"  src="https://www.aladdiny.com/uploads/loaddata.gif" alt="">
+      <div style="width: 100%;text-align: center;margin-bottom: 50px;" v-if="loge" >
+            <img id="loge" v-if="loge"  src="https://www.aladdiny.com/uploads/loaddata.gif" alt="">
              <!-- <div v-if="loge1" style="color: red;">加载失败</div>  -->
          </div>
       </div>
@@ -247,6 +250,9 @@ ul li {
              this.i=value
          
       },
+        fun(value) {
+         this.$bus.$emit("TingS",value)
+      },
         handleScroll() {
          let sss= [{
 
@@ -274,7 +280,8 @@ ul li {
               status: false,
               html: "废材",
 
-           },
+              },
+           
            ]
           
         const scrollHeight = this.$refs.no.scrollHeight;
@@ -283,7 +290,6 @@ ul li {
 
            const scrollPercentage = (scrollTop / (scrollHeight - clientHeight)) * 100;
            let remainingPercentage = 100 - scrollPercentage;
-            
              if (Math.ceil(remainingPercentage) == 0) {
             
                 this.loge = true
@@ -291,12 +297,12 @@ ul li {
             setTimeout(() => {
                this.loge = false
                  this.loge1 = true
-                 remainingPercentage = 20
              
-               this.arr[0].text.push(...sss)
-               
+                 this.arr[0].text.push(...sss)
              
             }, 3000)
+                remainingPercentage = 20
+            
          
              } 
         }
