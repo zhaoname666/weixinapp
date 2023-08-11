@@ -62,7 +62,7 @@ h5{
     padding-right:5% ;
 }
 #noe img{
-    width: 20vw;
+    width: 18vw;
     height: 15vh;
     margin: 5px;
 
@@ -90,11 +90,18 @@ h5{
     z-index: 20;
     padding-top: 20px;
 }
-
+.red{
+    position: absolute;
+    top:0px;
+    left: 0px;
+    width: 100%;
+    height: 80vh;
+    background: pink;
+}
 </style>
 <template>
   
-    <div class="hello" @wheel="gunD">
+    <div class="hello" @wheel="gunD" >
         <!-- 添加滚轮事件 -->
        <div class="top" >    <HelloWorld ></HelloWorld></div>
        <div style="height: 10vh;"></div>
@@ -107,13 +114,13 @@ h5{
         </div>
         <h5 class="right">反馈</h5>
         <div id="noe" >
-              <img v-for="(item, index) in arr" :key="index"     :src="item" alt=""> 
+              <img v-for="(item, index) in arr" :key="index"  @click="boxBtn(item)"    :src="item" alt=""> 
               
         </div>
-        <div id="no">书架</div> <img id="no2" src="../assets/img/尖括号111.png" alt="">
+        <div id="no" @click="Bookstore">书架</div> <img id="no2" src="../assets/img/尖括号111.png" alt="">
       </div>
     </div>
-      
+ 
     </div>
 </template>
 
@@ -122,11 +129,15 @@ import HelloWorld from './HelloWorld.vue'
 export default {
     name: "app",
     mounted(){
-     this.$bus.$on("TingS",this.fun)
+        this.$bus.$on("TingS", this.fun)
+     this.$bus.$on("xxx", this.fun1)
    },
     data() {
         return {
+            show: false,
             i: true,
+            n: true,
+            tmp:[],
             arr:["https://weread-1258476243.file.myqcloud.com/weread/cover/25/cpplatform_8numzl8erzinxvfsk3p9jv/t6_cpplatform_8numzl8erzinxvfsk3p9jv1685508354.jpg"]
             
         }
@@ -134,13 +145,36 @@ export default {
     components: {
         HelloWorld,
     },
+  
     methods: {//方法
+        Bookstore() {
+            this.$bus.$emit("abc", {arr:this.arr,id:666})
+          
+        },
+        boxBtn(src) {
+            let arr = {
+                src: src,
+                id:666
+
+            }
+            this.tmp.push(arr)
+   
+            console.log(arr);
+        },
         fun(value) {
             if (confirm("要添加到书架吗！！")) {
                      this.arr.unshift(value.src)
                }
        
            
+        },
+        fun1(value) {
+            console.log(value);
+            if (value == 1) {
+                this.i=false
+            } else {
+                 this.i = true
+             }
         },
         gunD() {
         //     console.log(111111111);
@@ -149,8 +183,11 @@ export default {
         //     } else if (event.deltaY < 0) {
         //      this.i=true
         //     }
-     }
+        },
+    
     },
+  
+    
     watch: {//监听
         top() {
 
@@ -170,6 +207,7 @@ export default {
     props: {
         msg: String
     }
+    
 }
 </script>
 

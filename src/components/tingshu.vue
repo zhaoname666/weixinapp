@@ -51,9 +51,9 @@
           #loge{
            width: 30px;
            height: 30px;
-           margin-left: -10px;
+            
            float:none ;
-           margin-left: 40%;
+           margin-left: 45%;
         
      
             }
